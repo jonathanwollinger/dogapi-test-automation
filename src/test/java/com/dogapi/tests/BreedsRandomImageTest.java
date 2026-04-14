@@ -2,18 +2,23 @@ package com.dogapi.tests;
 
 import com.dogapi.config.ApiResponseSpecs;
 import com.dogapi.config.BaseTest;
+import io.qameta.allure.*;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+@Epic("Dog API")
+@Feature("Imagem Aleatória")
 public class BreedsRandomImageTest extends BaseTest {
 
     @Test
+    @Story("Obter imagem aleatória")
+    @Description("Valida que a API retorna uma imagem aleatória com contrato válido")
     @DisplayName("Deve retornar uma imagem aleatória com contrato válido")
-    void deveRetornarImagemAleatoriaComContratoValido() {
+    void shouldReturnRandomImageWithValidContract() {
 
         Response response = dogApiClient
                 .getRandomImage()

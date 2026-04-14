@@ -2,6 +2,9 @@ package com.dogapi.tests;
 
 import com.dogapi.config.ApiResponseSpecs;
 import com.dogapi.config.BaseTest;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,11 +14,14 @@ import java.util.List;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.junit.jupiter.api.Assertions.*;
 
+@Epic("Dog API")
+@Feature("Imagens por raça")
 public class BreedImagesTest extends BaseTest {
 
     @Test
+    @Story("Raça válida")
     @DisplayName("Deve retornar imagens para uma raça válida com contrato válido")
-    void deveRetornarImagensParaRacaValida() {
+    void shouldReturnImagesForValidBreed() {
 
         Response response = dogApiClient
                 .getBreedImages("hound")
@@ -27,17 +33,18 @@ public class BreedImagesTest extends BaseTest {
 
         List<String> images = response.jsonPath().getList("message");
 
-        assertNotNull(images, "Esperado que a lista de imagens não seja nula");
-        assertFalse(images.isEmpty(), "Esperado que a lista de imagens contenha ao menos um item");
+        assertNotNull(images);
+        assertFalse(images.isEmpty());
 
         images.forEach(url ->
-                assertTrue(url.contains("dog.ceo"), "Esperado que a URL contenha o domínio dog.ceo")
+                assertTrue(url.contains("dog.ceo"))
         );
     }
 
     @Test
+    @Story("Raça inválida")
     @DisplayName("Deve retornar erro para raça inexistente com contrato válido")
-    void deveRetornarErroParaRacaInvalida() {
+    void shouldReturnErrorForInvalidBreed() {
 
         dogApiClient.getBreedImages("raca-invalida")
                 .then()
