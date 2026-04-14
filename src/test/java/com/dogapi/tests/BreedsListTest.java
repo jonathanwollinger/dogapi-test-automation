@@ -2,6 +2,7 @@ package com.dogapi.tests;
 
 import com.dogapi.config.ApiResponseSpecs;
 import com.dogapi.config.BaseTest;
+import io.qameta.allure.*;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,11 +13,15 @@ import java.util.Map;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.junit.jupiter.api.Assertions.*;
 
+@Epic("Dog API")
+@Feature("Lista de Raças")
 public class BreedsListTest extends BaseTest {
 
     @Test
+    @Story("Listar todas as raças")
+    @Description("Valida que a API retorna todas as raças com contrato e estrutura válidos")
     @DisplayName("Deve retornar todas as raças com contrato e estrutura válidos")
-    void deveRetornarTodasAsRacasComContratoEConteudoValido() {
+    void shouldReturnAllBreedsWithValidContractAndStructure() {
 
         Response response = dogApiClient
                 .getAllBreeds()

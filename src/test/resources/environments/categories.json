@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Erros de API",
+    "matchedStatuses": ["failed"],
+    "messageRegex": ".*404.*"
+  },
+  {
+    "name": "Falhas de validação",
+    "matchedStatuses": ["failed"],
+    "messageRegex": ".*expected.*"
+  }
+]
