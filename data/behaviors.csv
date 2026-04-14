@@ -1,0 +1,5 @@
+"Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
+"Dog API","Imagens por raça","Raça inválida","0","0","1","0","0"
+"Dog API","Lista de Raças","Listar todas as raças","0","0","1","0","0"
+"Dog API","Imagens por raça","Raça válida","0","0","1","0","0"
+"Dog API","Imagem Aleatória","Obter imagem aleatória","0","0","1","0","0"
