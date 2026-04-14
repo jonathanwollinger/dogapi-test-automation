@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.Matchers.*;
 
-public class ListBreedsTest extends BaseTest {
+public class BreedsListTest extends BaseTest {
 
     @Test
     @DisplayName("Deve retornar todas as racas com status de sucesso")
