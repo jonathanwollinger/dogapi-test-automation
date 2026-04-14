@@ -20,4 +20,15 @@ public class BreedImagesTest extends BaseTest {
                 .body("message", not(empty()))
                 .body("message", instanceOf(java.util.List.class));
     }
+
+    @Test
+    @DisplayName("Deve retornar erro ao buscar imagens de uma raca inexistente")
+    void deveRetornarErroParaRacaInvalida() {
+
+        dogApiClient.getBreedImages("raca-invalida")
+                .then()
+                .spec(ApiResponseSpecs.error404())
+                .body("status", equalTo("error"))
+                .body("message", containsString("Breed not found (main breed does not exist)"));
+    }
 }
