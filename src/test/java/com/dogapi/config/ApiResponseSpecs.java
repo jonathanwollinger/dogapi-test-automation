@@ -17,5 +17,13 @@ public final class ApiResponseSpecs {
                 .build();
     }
 
+    public static ResponseSpecification error404() {
+        return new ResponseSpecBuilder()
+                .expectStatusCode(404)
+                .expectContentType(ContentType.JSON)
+                .expectBody("message", notNullValue())
+                .build();
+    }
+
     private ApiResponseSpecs() {}
 }
