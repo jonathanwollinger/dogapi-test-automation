@@ -1,6 +1,8 @@
 # Dog API Test Automation
 
-Projeto de automação de testes para a API pública Dog API, desenvolvido com foco em boas práticas de engenharia de qualidade, organização em camadas e escalabilidade.
+Projeto de automação de testes para a API pública Dog API, desenvolvido com foco em boas práticas de engenharia de qualidade, validação de contrato e escalabilidade.
+
+![CI](https://github.com/jonathanwollinger/dogapi-test-automation/actions/workflows/api-tests.yml/badge.svg)
 
 ---
 
@@ -11,33 +13,80 @@ Validar os endpoints da Dog API garantindo:
 - Confiabilidade das respostas
 - Cobertura de cenários positivos e negativos
 - Validação de contrato (JSON Schema)
-- Estrutura escalável para automação de testes
+- Estrutura escalável para automação
 
 ---
 
-## 🧰 Stack
+## Stack
 
-- Java 17  
-- RestAssured  
-- JUnit 5  
-- Allure Reports  
+- Java 17
+- RestAssured
+- JUnit 5
+- Allure Reports
+
+---
+
+## Pré-requisitos
+
+- Java 17 instalado
+- Maven 3.9 ou superior
+- Git
+
+---
+
+## Como clonar o projeto
+
+```bash
+git clone https://github.com/jonathanwollinger/dogapi-test-automation.git
+cd dogapi-test-automation
+```
 
 ---
 
 ## Estrutura do Projeto
 
-```text
+```
 src/test/java/com/dogapi
- ├── config        # Configuração base dos testes (BaseTest)
- ├── client        # Camada de comunicação com a API (DogApiClient)
- ├── utils         # Utilitários (ex: Endpoints)
- ├── tests         # Casos de teste
- └── models        # (futuro) DTOs
+ ├── config        # Configuração base dos testes
+ ├── client        # Camada de comunicação com a API
+ ├── utils         # Utilitários (ex: endpoints)
+ └── tests         # Casos de teste
 
 src/test/resources
- ├── schemas       # JSON Schemas para validação de contrato
- └── environments  # Configuração de ambientes
+ ├── schemas       # JSON Schemas (validação de contrato)
 ```
+
+---
+
+## Cobertura de Testes
+
+### Listagem de raças
+`GET /breeds/list/all`
+
+- Validação de contrato (schema)
+- Validação de estrutura dinâmica
+- Verificação de dados esperados
+
+---
+
+### Imagens por raça
+`GET /breed/{breed}/images`
+
+#### Sucesso
+- Lista de imagens válida
+- URLs consistentes
+
+#### Erro
+- Retorno estruturado com status error
+- Validação de contrato
+
+---
+
+### Imagem aleatória
+`GET /breeds/image/random`
+
+- Validação de contrato via schema
+- Verificação de URL válida
 
 ---
 
@@ -49,7 +98,7 @@ mvn clean test
 
 ---
 
-## Relatórios com Allure
+## Gerar relatório Allure
 
 ```bash
 mvn allure:serve
@@ -57,16 +106,28 @@ mvn allure:serve
 
 ---
 
+## CI/CD
+
+Pipeline automatizado com GitHub Actions:
+
+- Execução automática em push e pull request nas branches develop e main
+- Pipeline multi-stage (build → test → report)
+- Geração e upload de artefatos (Allure e relatórios de teste)
+
+---
+
 ## Boas práticas aplicadas
 
 - Separação de responsabilidades (config, client, tests)
-- Reutilização de RequestSpecification
-- Encapsulamento de chamadas HTTP (Client)
-- Remoção de hardcoded (Endpoints)
-- Estrutura preparada para escalabilidade
+- Client desacoplado
+- Validação de contrato com JSON Schema
+- Testes sem redundância
+- Organização por domínio
+- Pipeline CI/CD estruturado
 
 ---
 
 ## Autor
 
-Projeto desenvolvido como parte de preparação e demonstração técnica para vaga de QA Sênior.
+Jonathan Wollinger  
+QA Automation Engineer  
