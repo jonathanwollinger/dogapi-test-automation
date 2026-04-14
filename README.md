@@ -103,6 +103,13 @@ mvn clean test
 ```bash
 mvn allure:serve
 ```
+---
+
+## Relatório de Testes
+
+O relatório Allure pode ser acessado em:
+
+https://jonathanwollinger.github.io/dogapi-test-automation/
 
 ---
 
