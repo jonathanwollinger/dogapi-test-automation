@@ -11,3 +11,8 @@ logs/
 
 # OS
 .DS_Store
+
+# Allure
+.allure/
+allure-results/
+target/
