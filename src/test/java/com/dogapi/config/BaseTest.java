@@ -1,7 +1,7 @@
 package com.dogapi.config;
 
 import com.dogapi.client.DogApiClient;
-import io.qameta.allure.restassured.AllureRestAssured;
+import com.dogapi.utils.AllureRestAssuredFilter;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
@@ -25,7 +25,7 @@ public class BaseTest {
                 .setBaseUri(BASE_URI)
                 .setContentType(ContentType.JSON)
                 .setAccept(ContentType.JSON)
-                .addFilter(new AllureRestAssured())
+                .addFilter(new AllureRestAssuredFilter())
                 .build();
     }
 }
